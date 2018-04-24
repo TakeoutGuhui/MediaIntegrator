@@ -21,8 +21,9 @@ namespace MediaIntegrator
             List<Product> products = loader.LoadProducts();
             int i;
             */
-            XmlProductLoader loader = new XmlProductLoader();
-            loader.SaveProducts(loader.LoadProducts());
+            XmlProductLoader xmlLoader = new XmlProductLoader();
+            CsvProductLoader csvLoader = new CsvProductLoader("../../MediaShop.csv");
+            xmlLoader.SaveProducts(csvLoader.LoadProducts());
             
         }
     }

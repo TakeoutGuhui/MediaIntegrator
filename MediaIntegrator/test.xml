@@ -1,0 +1,278 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Inventory>
+  <Item>
+    <Name>Sailing the Seas of Cheese</Name>
+    <Count>12</Count>
+    <Price>44,90</Price>
+    <Comment>bra</Comment>
+    <Artist>Primus</Artist>
+    <Publisher>Caroline records</Publisher>
+    <Genre>Funk</Genre>
+    <Year>1991</Year>
+    <ProductID>1</ProductID>
+  </Item>
+  <Item>
+    <Name>Pork Soda</Name>
+    <Count>13</Count>
+    <Price>99,90</Price>
+    <Comment>bra</Comment>
+    <Artist>Primus</Artist>
+    <Publisher>Caroline records</Publisher>
+    <Genre>Funk</Genre>
+    <Year>1993</Year>
+    <ProductID>2</ProductID>
+  </Item>
+  <Item>
+    <Name>Brown Album</Name>
+    <Count>107</Count>
+    <Price>99,90</Price>
+    <Comment>bra</Comment>
+    <Artist>Primus</Artist>
+    <Publisher>Caroline records</Publisher>
+    <Genre>Funk</Genre>
+    <Year>1997</Year>
+    <ProductID>3</ProductID>
+  </Item>
+  <Item>
+    <Name>Antipop</Name>
+    <Count>45</Count>
+    <Price>99,90</Price>
+    <Comment>bra</Comment>
+    <Artist>Primus</Artist>
+    <Publisher>Caroline records</Publisher>
+    <Genre>Funk</Genre>
+    <Year>1999</Year>
+    <ProductID>4</ProductID>
+  </Item>
+  <Item>
+    <Name>Fuel</Name>
+    <Count>24</Count>
+    <Price>199,90</Price>
+    <Comment>bra</Comment>
+    <Artist>Raised Fist</Artist>
+    <Publisher>Burning Heart Records</Publisher>
+    <Genre>Hardcore</Genre>
+    <Year>1998</Year>
+    <ProductID>5</ProductID>
+  </Item>
+  <Item>
+    <Name>Ignoring the Guidelines</Name>
+    <Count>19</Count>
+    <Price>99,90</Price>
+    <Comment>bra</Comment>
+    <Artist>Raised Fist</Artist>
+    <Publisher>Burning Heart Records</Publisher>
+    <Genre>Hardcore</Genre>
+    <Year>2000</Year>
+    <ProductID>6</ProductID>
+  </Item>
+  <Item>
+    <Name>Dedication</Name>
+    <Count>24</Count>
+    <Price>99,90</Price>
+    <Comment>bra</Comment>
+    <Artist>Raised Fist</Artist>
+    <Publisher>Burning Heart Records</Publisher>
+    <Genre>Hardcore</Genre>
+    <Year>2002</Year>
+    <ProductID>7</ProductID>
+  </Item>
+  <Item>
+    <Name>Djävulsvingar Över Kapellet</Name>
+    <Count>12</Count>
+    <Price>99,90</Price>
+    <Comment>bra</Comment>
+    <Artist>The Kristet Utseende</Artist>
+    <Publisher>Ägg Tapes &amp; Records</Publisher>
+    <Genre>Metal</Genre>
+    <Year>2013</Year>
+    <ProductID>8</ProductID>
+  </Item>
+  <Item>
+    <Name>Ghost</Name>
+    <Count>2</Count>
+    <Price>99,90</Price>
+    <Comment>bra</Comment>
+    <Artist>Anup Sastry</Artist>
+    <Publisher>Unknown</Publisher>
+    <Genre>Metal</Genre>
+    <Year>2013</Year>
+    <ProductID>9</ProductID>
+  </Item>
+  <Item>
+    <Name>Time is a Machine</Name>
+    <Count>12</Count>
+    <Price>99,90</Price>
+    <Comment>bra</Comment>
+    <Artist>Listener</Artist>
+    <Publisher>Tangled Talk</Publisher>
+    <Genre>Indie Rock</Genre>
+    <Year>2013</Year>
+    <ProductID>10</ProductID>
+  </Item>
+  <Item>
+    <Name>Crustfall</Name>
+    <Count>20</Count>
+    <Price>29,90</Price>
+    <Comment>bra</Comment>
+    <Artist>Days N Daze</Artist>
+    <Publisher>Goathead Record Collective</Publisher>
+    <Genre>Punk</Genre>
+    <Year>2017</Year>
+    <ProductID>11</ProductID>
+  </Item>
+  <Item>
+    <Name>The Oogle Deathmachine</Name>
+    <Count>34</Count>
+    <Price>39,90</Price>
+    <Comment>bra</Comment>
+    <Artist>Days N Daze</Artist>
+    <Publisher>Goathead Record Collective</Publisher>
+    <Genre>Punk</Genre>
+    <Year>2013</Year>
+    <ProductID>12</ProductID>
+  </Item>
+  <Item>
+    <Name>Rogue Taxidermy</Name>
+    <Count>28</Count>
+    <Price>49,90</Price>
+    <Comment>bra</Comment>
+    <Artist>Days N Daze</Artist>
+    <Publisher>Goathead Record Collective</Publisher>
+    <Genre>Punk</Genre>
+    <Year>2013</Year>
+    <ProductID>13</ProductID>
+  </Item>
+  <Item>
+    <Name>Devil is Fine</Name>
+    <Count>11</Count>
+    <Price>69,90</Price>
+    <Comment>bra</Comment>
+    <Artist>Zeal &amp; Ardor</Artist>
+    <Publisher>Radicalis</Publisher>
+    <Genre>Death Metal</Genre>
+    <Year>2017</Year>
+    <ProductID>14</ProductID>
+  </Item>
+  <Item>
+    <Name>Toxicity</Name>
+    <Count>43</Count>
+    <Price>149,90</Price>
+    <Comment>bra</Comment>
+    <Artist>System of a Down</Artist>
+    <Publisher>Columbia</Publisher>
+    <Genre>Metal</Genre>
+    <Year>2001</Year>
+    <ProductID>15</ProductID>
+  </Item>
+  <Item>
+    <Name>Steal This Album!</Name>
+    <Count>23</Count>
+    <Price>69,90</Price>
+    <Comment>bra</Comment>
+    <Artist>System of a Down</Artist>
+    <Publisher>Columbia</Publisher>
+    <Genre>Metal</Genre>
+    <Year>2002</Year>
+    <ProductID>16</ProductID>
+  </Item>
+  <Item>
+    <Name>Mezmerize</Name>
+    <Count>47</Count>
+    <Price>39,90</Price>
+    <Comment>bra</Comment>
+    <Artist>System of a Down</Artist>
+    <Publisher>Columbia</Publisher>
+    <Genre>Metal</Genre>
+    <Year>2005</Year>
+    <ProductID>17</ProductID>
+  </Item>
+  <Item>
+    <Name>Hypnotize</Name>
+    <Count>34</Count>
+    <Price>39,90</Price>
+    <Comment>bra</Comment>
+    <Artist>System of a Down</Artist>
+    <Publisher>Columbia</Publisher>
+    <Genre>Metal</Genre>
+    <Year>2005</Year>
+    <ProductID>18</ProductID>
+  </Item>
+  <Item>
+    <Name>Baby Teeth</Name>
+    <Count>12</Count>
+    <Price>49,90</Price>
+    <Comment>bra</Comment>
+    <Artist>Screaming Females</Artist>
+    <Publisher>Don Giovanni Records</Publisher>
+    <Genre>Indie Rock</Genre>
+    <Year>2006</Year>
+    <ProductID>19</ProductID>
+  </Item>
+  <Item>
+    <Name>PowerMove</Name>
+    <Count>10</Count>
+    <Price>39,90</Price>
+    <Comment>bra</Comment>
+    <Artist>Screaming Females</Artist>
+    <Publisher>Don Giovanni Records</Publisher>
+    <Genre>Indie Rock</Genre>
+    <Year>2009</Year>
+    <ProductID>20</ProductID>
+  </Item>
+  <Item>
+    <Name>Ugly</Name>
+    <Count>12</Count>
+    <Price>39,90</Price>
+    <Comment>bra</Comment>
+    <Artist>Screaming Females</Artist>
+    <Publisher>Don Giovanni Records</Publisher>
+    <Genre>Indie Rock</Genre>
+    <Year>2012</Year>
+    <ProductID>21</ProductID>
+  </Item>
+  <Item>
+    <Name>Rose Mountain</Name>
+    <Count>7</Count>
+    <Price>39,90</Price>
+    <Comment>bra</Comment>
+    <Artist>Screaming Females</Artist>
+    <Publisher>Don Giovanni Records</Publisher>
+    <Genre>Indie Rock</Genre>
+    <Year>2015</Year>
+    <ProductID>22</ProductID>
+  </Item>
+  <Item>
+    <Name>Castle Talk</Name>
+    <Count>3</Count>
+    <Price>39,90</Price>
+    <Comment>bra</Comment>
+    <Artist>Screaming Females</Artist>
+    <Publisher>Don Giovanni Records</Publisher>
+    <Genre>Indie Rock</Genre>
+    <Year>2010</Year>
+    <ProductID>23</ProductID>
+  </Item>
+  <Item>
+    <Name>I Against I</Name>
+    <Count>45</Count>
+    <Price>39,90</Price>
+    <Comment>bra</Comment>
+    <Artist>Bad Brains</Artist>
+    <Publisher>SST</Publisher>
+    <Genre>Hardcore Punk</Genre>
+    <Year>1986</Year>
+    <ProductID>24</ProductID>
+  </Item>
+  <Item>
+    <Name>Rock for Light</Name>
+    <Count>34</Count>
+    <Price>39,90</Price>
+    <Comment>bra</Comment>
+    <Artist>Bad Brains</Artist>
+    <Publisher>Passport Records</Publisher>
+    <Genre>Hardcore Punk</Genre>
+    <Year>1983</Year>
+    <ProductID>25</ProductID>
+  </Item>
+</Inventory>

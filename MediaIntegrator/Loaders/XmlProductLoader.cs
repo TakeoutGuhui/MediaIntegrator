@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,7 +39,7 @@ namespace MediaIntegrator.Loaders
             select new XElement("Item",
                 new XElement("Name", product.Name),
                 new XElement("Count", product.Stock),
-                new XElement("Price", product.Price),
+                new XElement("Price", product.Price.ToString().Replace('.',',')),
                 new XElement("Comment", product.Comment),
                 new XElement("Artist", product.Artist),
                 new XElement("Publisher", product.Publisher),
@@ -46,7 +47,7 @@ namespace MediaIntegrator.Loaders
                 new XElement("Year", product.Year),
                 new XElement("ProductID", product.ID))
             ));
-            Debug.WriteLine(xDoc.ToString());
+            xDoc.Save("../../test.xml");
         }
     }
 }
