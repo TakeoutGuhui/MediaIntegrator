@@ -12,6 +12,13 @@ namespace MediaIntegrator.Loaders
 {
     class XmlProductLoader : IProductLoader
     {
+
+        private readonly string _filePath; // The path to the file where the products are saved
+        public XmlProductLoader(string filePath)
+        {
+            _filePath = filePath;
+        }
+
         public List<Product> LoadProducts()
         {
             XDocument productsXml = XDocument.Load("../../simplemedia.xml");
@@ -28,13 +35,12 @@ namespace MediaIntegrator.Loaders
                     Publisher = (string) h.Element("Publisher"),
                     Genre = (string) h.Element("Genre"),
                     Year = uint.Parse(h.Element("Year").Value)
-                })
-                .ToList();
+                }).ToList();
             return products;
         }
         public void SaveProducts(List<Product> products)
         {
-            var xDoc = new XDocument(new XElement("Inventory",
+            var xDocument = new XDocument(new XElement("Inventory",
             from product in products
             select new XElement("Item",
                 new XElement("Name", product.Name),
@@ -47,7 +53,7 @@ namespace MediaIntegrator.Loaders
                 new XElement("Year", product.Year),
                 new XElement("ProductID", product.ID))
             ));
-            xDoc.Save("../../test.xml");
+            xDocument.Save(_filePath);
         }
     }
 }

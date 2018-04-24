@@ -16,15 +16,10 @@ namespace MediaIntegrator
                 Directory.CreateDirectory("fromMediaShop");
             if(!Directory.Exists("toSimpleMedia"))
                 Directory.CreateDirectory("toSimpleMedia");
-            /*
-            XmlProductLoader loader = new XmlProductLoader();
-            List<Product> products = loader.LoadProducts();
-            int i;
-            */
-            XmlProductLoader xmlLoader = new XmlProductLoader();
+
+            XmlProductLoader xmlLoader = new XmlProductLoader("../../test.xml");
             CsvProductLoader csvLoader = new CsvProductLoader("../../MediaShop.csv");
-            xmlLoader.SaveProducts(csvLoader.LoadProducts());
-            
+            xmlLoader.SaveProducts(csvLoader.LoadProducts());  
         }
     }
 }
