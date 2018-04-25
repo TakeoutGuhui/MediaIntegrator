@@ -18,7 +18,7 @@ namespace MediaIntegrator
             if(!Directory.Exists("toMediaShop"))
                 Directory.CreateDirectory("toMediaShop");
             if (!Directory.Exists("fromSimpleMedia"))
-                Directory.CreateDirectory("ToMediaShop");
+                Directory.CreateDirectory("fromSimpleMedia");
             if (!Directory.Exists("toSimpleMedia"))
                 Directory.CreateDirectory("toSimpleMedia");
 
@@ -27,16 +27,17 @@ namespace MediaIntegrator
             mediaShopWatcher.Path = "fromMediaShop";
             mediaShopWatcher.Changed += ListenDirectory;
             mediaShopWatcher.IncludeSubdirectories = false;
-            mediaShopWatcher.NotifyFilter = NotifyFilters.FileName | NotifyFilters.Size;
+            //mediaShopWatcher.NotifyFilter = NotifyFilters.FileName | NotifyFilters.Size;
             mediaShopWatcher.EnableRaisingEvents = true;
 
+            /*
             FileSystemWatcher simpleMediaWatcher = new FileSystemWatcher();
-            mediaShopWatcher.Path = "toSimpleMedia";
+            mediaShopWatcher.Path = "fromSimpleMedia";
             mediaShopWatcher.Changed += ListenDirectory;
             mediaShopWatcher.IncludeSubdirectories = false;
             mediaShopWatcher.NotifyFilter = NotifyFilters.FileName | NotifyFilters.Size;
             mediaShopWatcher.EnableRaisingEvents = true;
-
+            */
 
             XmlProductLoader xmlLoader = new XmlProductLoader("../../test.xml");
             CsvProductLoader csvLoader = new CsvProductLoader("../../MediaShop.csv");
@@ -48,6 +49,7 @@ namespace MediaIntegrator
 
         private static void ListenDirectory(object sender, FileSystemEventArgs e)
         {
+            Debug.WriteLine("File changed: " + e.Name);
             DateTime lastWriteTime = File.GetLastWriteTime(e.FullPath);
             if (lastWriteTime != lastRead)
             {
