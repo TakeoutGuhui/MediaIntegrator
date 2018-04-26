@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,16 +13,16 @@ namespace MediaIntegrator.Loaders
 {
     class XmlProductLoader : IProductLoader
     {
-
-        private readonly string _filePath; // The path to the file where the products are saved
-        public XmlProductLoader(string filePath)
+        private readonly string _fileExtension = ".xml";
+        private readonly string _fileName; // The path to the file where the products are saved
+        public XmlProductLoader(string fileName)
         {
-            _filePath = filePath;
+            _fileName = Path.Combine(Path.GetDirectoryName(fileName), Path.GetFileNameWithoutExtension(fileName));
         }
 
         public List<Product> LoadProducts()
         {
-            XDocument productsXml = XDocument.Load("../../simplemedia.xml");
+            XDocument productsXml = XDocument.Load(_fileName + _fileExtension);
 
             List<Product> products =
                 productsXml.Root.Elements("Item")
@@ -36,6 +37,7 @@ namespace MediaIntegrator.Loaders
                     Genre = (string) h.Element("Genre"),
                     Year = uint.Parse(h.Element("Year").Value)
                 }).ToList();
+            Console.WriteLine("Parsed the file: " + _fileName + _fileExtension);
             return products;
         }
         public void SaveProducts(List<Product> products)
@@ -53,7 +55,8 @@ namespace MediaIntegrator.Loaders
                 new XElement("Year", product.Year),
                 new XElement("ProductID", product.ID))
             ));
-            xDocument.Save(_filePath);
+            xDocument.Save(_fileName + _fileExtension);
+            Console.WriteLine("File saved at: " + _fileName + _fileExtension);
         }
     }
 }

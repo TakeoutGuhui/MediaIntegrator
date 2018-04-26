@@ -6,6 +6,7 @@ using System.Text;
 
 using MediaIntegrator;
 using System.Collections.Generic;
+using System;
 
 namespace MediaIntegrator.Loaders
 {
@@ -14,11 +15,13 @@ namespace MediaIntegrator.Loaders
     /// </summary>
     class CsvProductLoader : IProductLoader
     {
-        private readonly string _filePath; // The path to the file where the products are saved
+        private readonly string _fileName; // The path to the file where the products are saved
+        private readonly string _fileExtension = ".csv";
         private readonly string _delimiter = ";"; // The delimiter that should be used to separate the values in the file
-        public CsvProductLoader(string filePath)
+        
+        public CsvProductLoader(string fileName)
         {
-            _filePath = filePath;
+            _fileName = Path.Combine(Path.GetDirectoryName(fileName), Path.GetFileNameWithoutExtension(fileName));
         }
 
         /// <summary>
@@ -27,7 +30,7 @@ namespace MediaIntegrator.Loaders
         /// <returns></returns>
         public List<Product> LoadProducts()
         {
-            TextFieldParser parser = new TextFieldParser(_filePath);
+            TextFieldParser parser = new TextFieldParser(_fileName + _fileExtension);
             List<Product> products = new List<Product>();
             parser.TextFieldType = FieldType.Delimited;
             parser.SetDelimiters(_delimiter);
@@ -63,6 +66,7 @@ namespace MediaIntegrator.Loaders
                 }
 
             }
+            Console.WriteLine("Parsed the file: " + _fileName + _fileExtension);
             return products;
         }
 
@@ -112,7 +116,8 @@ namespace MediaIntegrator.Loaders
                 string productLine = ConvertToCsv(product);
                 stringBuilder.AppendLine(productLine);
             }
-            File.WriteAllText(_filePath, stringBuilder.ToString());
+            File.WriteAllText(_fileName + _fileExtension, stringBuilder.ToString());
+            Console.WriteLine("File saved at: " + _fileName + _fileExtension);
         }
     }
 }

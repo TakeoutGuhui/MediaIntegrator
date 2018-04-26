@@ -47,6 +47,7 @@
     <Compile Include="Loaders\XmlProductLoader.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="ProductList.cs" />
+    <Compile Include="ProductListConverter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
