@@ -18,37 +18,36 @@ namespace MediaIntegrator
 
         static void Main(string[] args)
         {
-            if(!Directory.Exists(fromMediaShop))
+            SetupDirectories();
+            SetupWatcher(fromMediaShop, MediaShopListener);
+            SetupWatcher(fromSimpleMedia, SimpleMediaListener);
+            while (Console.Read() != 'q') ;
+        }
+
+        private static void SetupDirectories()
+        {
+            if (!Directory.Exists(fromMediaShop))
                 Directory.CreateDirectory(fromMediaShop);
-            if(!Directory.Exists(toMediaShop))
+            if (!Directory.Exists(toMediaShop))
                 Directory.CreateDirectory(toMediaShop);
             if (!Directory.Exists(fromSimpleMedia))
                 Directory.CreateDirectory(fromSimpleMedia);
             if (!Directory.Exists(toSimpleMedia))
                 Directory.CreateDirectory(toSimpleMedia);
-
-
-            FileSystemWatcher mediaShopWatcher = new FileSystemWatcher();
-            mediaShopWatcher.Path = fromMediaShop;
-            mediaShopWatcher.Changed += MediaShopListener;
-            mediaShopWatcher.IncludeSubdirectories = false;
-            mediaShopWatcher.NotifyFilter = NotifyFilters.Size;
-            mediaShopWatcher.EnableRaisingEvents = true;
-            Console.WriteLine("Watch started on directory: " + mediaShopWatcher.Path);
-
-            
-            FileSystemWatcher simpleMediaWatcher = new FileSystemWatcher();
-            simpleMediaWatcher.Path = fromSimpleMedia;
-            simpleMediaWatcher.Changed += SimpleMediaListener;
-            simpleMediaWatcher.IncludeSubdirectories = false;
-            simpleMediaWatcher.NotifyFilter = NotifyFilters.FileName | NotifyFilters.Size;
-            simpleMediaWatcher.EnableRaisingEvents = true;
-            
-
-            while (Console.Read() != 'q') ;
         }
 
-        private static void transfer(IProductLoader from, IProductLoader to)
+        private static void SetupWatcher(string directory, FileSystemEventHandler handler)
+        {
+            FileSystemWatcher fileSystemWatcher = new FileSystemWatcher();
+            fileSystemWatcher.Path = directory;
+            fileSystemWatcher.Changed += handler;
+            fileSystemWatcher.IncludeSubdirectories = false;
+            fileSystemWatcher.NotifyFilter = NotifyFilters.Size;
+            fileSystemWatcher.EnableRaisingEvents = true;
+            Console.WriteLine(DateTime.Now + ": Watch started on directory: " + fileSystemWatcher.Path);
+        }
+
+        private static void TransferProductList(IProductLoader from, IProductLoader to)
         {
             to.SaveProducts(from.LoadProducts());
         }
@@ -61,7 +60,7 @@ namespace MediaIntegrator
             DateTime lastWriteTime = File.GetLastWriteTime(e.FullPath);
             if (lastWriteTime != lastRead1)
             {
-                transfer(new CsvProductLoader(e.FullPath), new XmlProductLoader(toSimpleMedia + e.Name));
+                TransferProductList(new CsvProductLoader(e.FullPath), new XmlProductLoader(toSimpleMedia + e.Name));
                 lastRead1 = lastWriteTime;
             }
         }
@@ -73,7 +72,7 @@ namespace MediaIntegrator
             DateTime lastWriteTime = File.GetLastWriteTime(e.FullPath);
             if (lastWriteTime != lastRead2)
             {
-                transfer(new XmlProductLoader(e.FullPath), new CsvProductLoader(toMediaShop + e.Name));
+                TransferProductList(new XmlProductLoader(e.FullPath), new CsvProductLoader(toMediaShop + e.Name));
                 lastRead1 = lastWriteTime;
             }
         }  

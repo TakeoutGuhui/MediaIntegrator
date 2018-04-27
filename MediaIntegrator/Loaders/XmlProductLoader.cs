@@ -37,7 +37,7 @@ namespace MediaIntegrator.Loaders
                     Genre = (string) h.Element("Genre"),
                     Year = uint.Parse(h.Element("Year").Value)
                 }).ToList();
-            Console.WriteLine("Parsed the file: " + _fileName + _fileExtension);
+            Console.WriteLine(DateTime.Now + ": Parsed the file: " + _fileName + _fileExtension);
             return products;
         }
         public void SaveProducts(List<Product> products)
@@ -56,7 +56,7 @@ namespace MediaIntegrator.Loaders
                 new XElement("ProductID", product.ID))
             ));
             xDocument.Save(_fileName + _fileExtension);
-            Console.WriteLine("File saved at: " + _fileName + _fileExtension);
+            Console.WriteLine(DateTime.Now + ": File saved at: " + _fileName + _fileExtension);
         }
     }
 }

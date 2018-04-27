@@ -66,7 +66,7 @@ namespace MediaIntegrator.Loaders
                 }
 
             }
-            Console.WriteLine("Parsed the file: " + _fileName + _fileExtension);
+            Console.WriteLine(DateTime.Now + ": Parsed the file: " + _fileName + _fileExtension);
             return products;
         }
 
@@ -117,7 +117,7 @@ namespace MediaIntegrator.Loaders
                 stringBuilder.AppendLine(productLine);
             }
             File.WriteAllText(_fileName + _fileExtension, stringBuilder.ToString());
-            Console.WriteLine("File saved at: " + _fileName + _fileExtension);
+            Console.WriteLine(DateTime.Now + ": File saved at: " + _fileName + _fileExtension);
         }
     }
 }
