@@ -26,16 +26,16 @@ namespace MediaIntegrator.Loaders
 
             List<Product> products =
                 productsXml.Root.Elements("Item")
-                .Select(h => new Product() { 
-                    ID = (string) h.Element("ProductID"),
-                    Name = (string) h.Element("Name"),
-                    Stock = uint.Parse(h.Element("Count").Value),
-                    Price = decimal.Parse(h.Element("Price").Value),
-                    Comment = (string) h.Element("Comment"),
-                    Artist = (string) h.Element("Artist"),
-                    Publisher = (string) h.Element("Publisher"),
-                    Genre = (string) h.Element("Genre"),
-                    Year = uint.Parse(h.Element("Year").Value)
+                .Select(productXml => new Product() { 
+                    ID = (string) productXml.Element("ProductID"),
+                    Name = (string) productXml.Element("Name"),
+                    Stock = uint.Parse(productXml.Element("Count").Value),
+                    Price = decimal.Parse(productXml.Element("Price").Value),
+                    Comment = (string) productXml.Element("Comment"),
+                    Artist = (string) productXml.Element("Artist"),
+                    Publisher = (string) productXml.Element("Publisher"),
+                    Genre = (string) productXml.Element("Genre"),
+                    Year = uint.Parse(productXml.Element("Year").Value)
                 }).ToList();
             Console.WriteLine(DateTime.Now + ": Parsed the file: " + _fileName + _fileExtension);
             return products;
