@@ -1,11 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Text.RegularExpressions;
-using System.Windows;
-
-namespace MediaIntegrator
+﻿namespace MediaIntegrator
 {
     /// <summary>
-    /// Class that represents a product
+    /// Represents a product
     /// </summary>
     internal class Product
     {

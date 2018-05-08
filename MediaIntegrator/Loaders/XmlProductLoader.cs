@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml;
 using System.Xml.Linq;
 
 namespace MediaIntegrator.Loaders
@@ -17,28 +13,33 @@ namespace MediaIntegrator.Loaders
         private readonly string _fileName; // The path to the file where the products are saved
         public XmlProductLoader(string fileName)
         {
-            _fileName = Path.Combine(Path.GetDirectoryName(fileName), Path.GetFileNameWithoutExtension(fileName));
+            _fileName = Path.Combine(Path.GetDirectoryName(fileName) ?? throw new InvalidOperationException(), Path.GetFileNameWithoutExtension(fileName) ?? throw new InvalidOperationException());
         }
 
         public List<Product> LoadProducts()
         {
-            XDocument productsXml = XDocument.Load(_fileName + _fileExtension);
+            var productsXml = XDocument.Load(_fileName + _fileExtension);
 
-            List<Product> products =
-                productsXml.Root.Elements("Item")
-                .Select(productXml => new Product() { 
-                    ID = (string) productXml.Element("ProductID"),
-                    Name = (string) productXml.Element("Name"),
-                    Stock = uint.Parse(productXml.Element("Count").Value),
-                    Price = decimal.Parse(productXml.Element("Price").Value),
-                    Comment = (string) productXml.Element("Comment"),
-                    Artist = (string) productXml.Element("Artist"),
-                    Publisher = (string) productXml.Element("Publisher"),
-                    Genre = (string) productXml.Element("Genre"),
-                    Year = uint.Parse(productXml.Element("Year").Value)
-                }).ToList();
-            Console.WriteLine(DateTime.Now + ": Parsed the file: " + _fileName + _fileExtension);
-            return products;
+            if (productsXml.Root != null)
+            {
+                List<Product> products =
+                    productsXml.Root.Elements("Item")
+                        .Select(productXml => new Product() { 
+                            ID = (string) productXml.Element("ProductID"),
+                            Name = (string) productXml.Element("Name"),
+                            Stock = uint.Parse(productXml.Element("Count")?.Value ?? throw new InvalidOperationException()),
+                            Price = decimal.Parse(productXml.Element("Price")?.Value ?? throw new InvalidOperationException()),
+                            Comment = (string) productXml.Element("Comment"),
+                            Artist = (string) productXml.Element("Artist"),
+                            Publisher = (string) productXml.Element("Publisher"),
+                            Genre = (string) productXml.Element("Genre"),
+                            Year = uint.Parse(productXml.Element("Year")?.Value ?? throw new InvalidOperationException())
+                        }).ToList();
+                Console.WriteLine(DateTime.Now + ": Parsed the file: " + _fileName + _fileExtension);
+                return products;
+            }
+
+            return null;
         }
         public void SaveProducts(List<Product> products)
         {
@@ -47,7 +48,7 @@ namespace MediaIntegrator.Loaders
             select new XElement("Item",
                 new XElement("Name", product.Name),
                 new XElement("Count", product.Stock),
-                new XElement("Price", product.Price.ToString().Replace('.',',')),
+                new XElement("Price", product.Price.ToString(CultureInfo.InvariantCulture).Replace('.',',')),
                 new XElement("Comment", product.Comment),
                 new XElement("Artist", product.Artist),
                 new XElement("Publisher", product.Publisher),
