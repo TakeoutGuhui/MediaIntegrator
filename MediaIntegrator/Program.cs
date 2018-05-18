@@ -26,14 +26,10 @@ namespace MediaIntegrator
         /// </summary>
         private static void SetupDirectories()
         {
-            if (!Directory.Exists(FromMediaShop))
-                Directory.CreateDirectory(FromMediaShop);
-            if (!Directory.Exists(ToMediaShop))
-                Directory.CreateDirectory(ToMediaShop);
-            if (!Directory.Exists(FromSimpleMedia))
-                Directory.CreateDirectory(FromSimpleMedia);
-            if (!Directory.Exists(ToSimpleMedia))
-                Directory.CreateDirectory(ToSimpleMedia);
+            Directory.CreateDirectory(FromMediaShop);
+            Directory.CreateDirectory(ToMediaShop);
+            Directory.CreateDirectory(FromSimpleMedia);
+            Directory.CreateDirectory(ToSimpleMedia);
         }
 
         /// <summary>
@@ -75,8 +71,10 @@ namespace MediaIntegrator
         private static void MediaShopListener(object sender, FileSystemEventArgs e)
         {
             DateTime lastWriteTime = File.GetLastWriteTime(e.FullPath); 
-            if (lastWriteTime == _lastRead1) return; 
+            if (lastWriteTime == _lastRead1) return;
+            Console.WriteLine("This changed: " + e.Name);
             TransferProductList(new CsvProductLoader(e.FullPath), new XmlProductLoader(ToSimpleMedia + e.Name));
+
             _lastRead1 = lastWriteTime;
         }
 
@@ -84,14 +82,15 @@ namespace MediaIntegrator
 
         /// <summary>
         /// Handler for the watch on the fromSimpleMedia directory.
-        /// When a file is created or changed in the directory it is converted from CSV to XML and is put in the toSimpleMedia directory
+        /// When a file is created or changed in the directory it is converted from XML to CSV and is put in the toMediaShop directory
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private static void SimpleMediaListener(object sender, FileSystemEventArgs e)
         {
             DateTime lastWriteTime = File.GetLastWriteTime(e.FullPath);
-            if (lastWriteTime == _lastRead2) return;
+            if (lastWriteTime == _lastRead2) return; // To prevent 
+            Console.WriteLine("This changed: " + e.Name);
             TransferProductList(new XmlProductLoader(e.FullPath), new CsvProductLoader(ToMediaShop + e.Name));
             _lastRead2 = lastWriteTime;
         }  
